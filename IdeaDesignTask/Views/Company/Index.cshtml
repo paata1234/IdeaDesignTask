@@ -1,0 +1,123 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<Company>
+
+
+<form method="post" asp-action="Index" asp-controller="Company">
+    <div class="container p-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">კომპანიები</h2>
+            </div>
+            <div class="col-12 text-right">
+
+                <a asp-controller="Company" asp-action="AddNew" class="btn btn-info"><i class="fas fa-plus-square"></i> &nbsp; დამატება</a>
+                &nbsp;&nbsp;
+
+                <input name="SearchResult" placeholder="name , surname  etc..">
+                <input type="submit" class="btn btn-primary" value="ძებნა" />
+                &nbsp;&nbsp;
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+
+@if (Model.Data.Count() > 0)
+{
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    დასახელება
+                </th>
+                <th class="text-center">
+                    მისამართი
+                </th>
+                <th class="text-center">
+                    საქმიანობა
+                </th>
+                <th class="text-center">
+                    თანამშრომლები
+                </th>
+                <th class="text-center">
+                    რედ || წაშლა || სრულ.
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.Data)
+            {
+            <tr>
+                <td width="20%" class="text-center">@obj.name</td>
+                <td width="20%" class="text-center">@obj.address</td>
+                <td width="20%" class="text-center">@obj.business</td>
+                <td class="text-center">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Company" asp-route-id="@obj.id" asp-action="UsersInfo" class="btn btn-warning"><i class="fas fa-info-circle"></i> ნახვა</a>
+                    </div>
+                <td class="text-center">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Company" asp-route-id="@obj.id" asp-action="Edit" class="btn btn-primary" id="btnedit"><i class="fas fa-edit"></i></a>
+                        &nbsp;
+                        <a onclick="ConfirmFunction()" class="btn btn-danger" id="btnremove"><i class="fas fa-trash-alt"></i></a>
+                        &nbsp;
+                        <a asp-controller="Company" asp-route-id="@obj.id" asp-action="AllInfo" class="btn btn-outline-success" id="btnshow"><i class="fas fa-info-circle"></i></a>
+
+
+                        <a id="suretext" style="display:none ; font-size:15px ">Sure? &nbsp;&nbsp;</a>
+
+                        <a asp-controller="Company" asp-route-id="@obj.id" asp-action="Delete" class="btn btn-outline-success" id="btnsure" style="display:none"><i class="fas fa-check-square"></i></a>
+                        &nbsp;
+                        <a onclick="Wrongperson()" class="btn btn-outline-success" id="btnwrong" style="display:none"><i class="fas fa-times-circle"></i></a>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No User Exist </p>
+}
+
+<cs-pager cs-paging-pagenumber=(int)Model.PageNumber
+          cs-paging-totalitems=(int)Model.TotalItems
+          cs-paging-pagesize=(int)Model.PageSize
+          cs-pagenumber-param="pagenumber"
+          asp-controller="Company"
+          asp-action="Index"
+          cs-pager-li-current-class="page-item active"
+          cs-pager-li-other-class="page-item"
+          cs-pager-li-non-active-class="page-item disabled"
+          cs-pager-link-current-class="page-link"
+          cs-pager-link-other-class="page-link">
+</cs-pager>
+
+
+
+
+
+<script>
+      function ConfirmFunction() {
+          document.getElementById("btnedit").style.display = "none";
+          document.getElementById("btnremove").style.display = "none";
+          document.getElementById("btnshow").style.display = "none";
+
+          document.getElementById("suretext").style.display = "";
+          document.getElementById("btnsure").style.display = "";
+          document.getElementById("btnwrong").style.display = "";
+        }
+
+       function Wrongperson() {
+           document.getElementById("suretext").style.display = "none";
+           document.getElementById("btnsure").style.display = "none";
+           document.getElementById("btnwrong").style.display = "none";
+
+           document.getElementById("btnedit").style.display = "";
+           document.getElementById("btnremove").style.display = "";
+           document.getElementById("btnshow").style.display = "";
+        }
+
+</script>
+

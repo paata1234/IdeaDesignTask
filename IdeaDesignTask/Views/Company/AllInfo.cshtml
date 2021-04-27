@@ -1,0 +1,32 @@
+﻿@model IdeaDesignTask.Models.Company
+
+<form method="post">
+    <div class="border p-3 text-center">
+        <h2 class="text-info pl-3">@Model.name</h2>
+        <div class="form-group row">
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">დასახელება</th>
+                    <th scope="col">მისამართი</th>
+                    <th scope="col">საქმიანობა</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@Model.id</th>
+                    <td>@Model.name</td>
+                    <td>@Model.address</td>
+                    <td>@Model.business</td>
+                </tr>
+            </tbody>
+        </table>
+        <br /> <br /><br />
+        <div class="col-3">
+            <a asp-action="Index" class="btn btn-success w-100 "><i class="fas fa-backspace"></i> &nbsp; დაბრუნება</a>
+        </div>
+    </div>
+</form>

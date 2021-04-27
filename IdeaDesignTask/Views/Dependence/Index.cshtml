@@ -1,0 +1,62 @@
+﻿@model IdeaDesignTask.Models.Physicalusers
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+                <h2 class="text-primary">@Model.name @Model.surname</h2>
+        </div>
+        <div class="col-12 text-right">
+
+            <input name="SearchResult" placeholder="კომპანიის სახელი">
+            <input type="submit" class="btn btn-primary" value="ძებნა" />
+            &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+<br />
+<br />
+
+@if (Model.Company.Count > 0)
+{
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    სახელი
+                </th>
+                <th class="text-center">
+                    მისამართი
+                </th>
+                <th class="text-center">
+                    საქმიანობა
+                </th>
+                <th class="text-center">
+                    დამატება
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.Company)
+            {
+                <tr>
+                    <td width="25%" class="text-center">@obj.name</td>
+                    <td width="25%" class="text-center">@obj.address</td>
+                    <td width="25%" class="text-center">@obj.business</td>
+                    <td class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Dependence" asp-route-companyid="@obj.id" asp-route-userid="@Model.id" asp-action="AddCompany" class="btn btn-primary" id="btnedit"><i class="fas fa-edit"></i> დამატება</a>
+                        </div>
+                    </td>
+                </tr>
+                }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No User Exist </p>
+}
+
+
+

@@ -1,0 +1,105 @@
+﻿@model IdeaDesignTask.Models.Physicalusers
+
+<form method="post" asp-action="AddNew">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <h2 class="text-info pl-3 text-center">ფიზიკური პირის დამატება</h2>
+        <div class="form-group row">
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <a>სახელი <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="name"/>
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <a>გვარი <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="surname" />
+                        <span asp-validation-for="surname" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <a>სქესი <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="sex">
+                            <option value="Male">მდედრობითი</option>
+                            <option value="Female">მამრობითი</option>
+                        </select>
+
+                        <span asp-validation-for="sex" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <a>პირადი ნომერი <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="personalid"/>
+                        <span asp-validation-for="personalid" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <a>დაბადების თარიღი <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="date" type="date" />
+                        <span asp-validation-for="date" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <a>ქალაქი <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="city" />
+                        <span asp-validation-for="city" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <a>მობილურის ნომერი <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="phonenumber" type="tel" />
+                        <span asp-validation-for="phonenumber" class="text-danger"></span>
+                    </div>
+
+                </div>
+                &nbsp;
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn btn-info w-100" value="დამატება" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-100 ">დაბრუნება</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+
+</form>

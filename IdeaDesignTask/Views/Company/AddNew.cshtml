@@ -1,0 +1,58 @@
+﻿@model IdeaDesignTask.Models.Company
+
+<form method="post" asp-action="AddNew">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <h2 class="text-info pl-3 text-center">ახალი კომპანიის დამატება</h2>
+        <div class="form-group row">
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row text-center">
+                    <div class="col-4">
+                        <a>სახელი  <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="name" class="input-group" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row text-center">
+                    <div class="col-4">
+                        <a>მისამართი  <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="address" class="input-group" />
+                        <span asp-validation-for="address" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row text-center">
+                    <div class="col-4">
+                        <a>საქმიანობა  <span style="color:red">*</span></a>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="business" class="input-group" />
+                        <span asp-validation-for="business" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <br />
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn btn-info w-100" value="დამატება" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-100 ">დაბრუნება</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
