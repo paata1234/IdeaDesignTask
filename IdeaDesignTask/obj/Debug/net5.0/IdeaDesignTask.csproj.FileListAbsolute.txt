@@ -445,3 +445,5 @@ C:\Users\Professional\source\repos\IdeaDesignTask\IdeaDesignTask\obj\Debug\net5.
 C:\Users\Professional\source\repos\IdeaDesignTask\IdeaDesignTask\obj\Debug\net5.0\Razor\Views\Dependence\ErroMsg.cshtml.g.cs
 C:\Users\Professional\source\repos\IdeaDesignTask\IdeaDesignTask\bin\Debug\net5.0\Data.dll
 C:\Users\Professional\source\repos\IdeaDesignTask\IdeaDesignTask\bin\Debug\net5.0\Data.pdb
+C:\Users\Professional\source\repos\IdeaDesignTask\IdeaDesignTask\bin\Debug\net5.0\App.dll
+C:\Users\Professional\source\repos\IdeaDesignTask\IdeaDesignTask\bin\Debug\net5.0\App.pdb

@@ -25,6 +25,7 @@
     ".NETCoreApp,Version=v5.0": {
       "IdeaDesignTask/1.0.0": {
         "dependencies": {
+          "App": "1.0.0",
           "Data": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.5",
           "Microsoft.EntityFrameworkCore": "5.0.5",
@@ -1890,6 +1891,17 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
+        }
+      },
+      "App/1.0.0": {
+        "dependencies": {
+          "Data": "1.0.0"
+        },
+        "runtime": {
+          "App.dll": {}
+        },
+        "compile": {
+          "App.dll": {}
         }
       },
       "Data/1.0.0": {
@@ -4507,6 +4519,11 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Data/1.0.0": {
       "type": "project",

@@ -48,6 +48,5 @@ namespace App.Repositories
             this._db.Set<T>().Remove(entity);
         }
 
-
     }
 }

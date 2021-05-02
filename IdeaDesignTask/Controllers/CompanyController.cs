@@ -16,7 +16,7 @@ namespace IdeaDesignTask.Controllers
     {
         public readonly IRepositoryWrapper repositoryWrapper;
 
-        public CompanyController(IRepositoryWrapper repositoryWrapper
+        public CompanyController(IRepositoryWrapper repositoryWrapper)
         {
             this.repositoryWrapper = repositoryWrapper;
         }
@@ -25,12 +25,12 @@ namespace IdeaDesignTask.Controllers
         {
             int ExcludeRecords = (pagesize * pagenumber) - pagesize;
 
-            IEnumerable<Company> company = repositoryWrapper..Skip(ExcludeRecords).Take(pagesize);
+            IEnumerable<Company> company = repositoryWrapper.GetCompany.GetAllCompany().Skip(ExcludeRecords).Take(pagesize);
 
             var Result = new PagedResult<Company>
             {
                 Data = company.ToList(),
-                TotalItems = _db.Company.Count(),
+                TotalItems = repositoryWrapper.GetCompany.GetAllCompany().Count(),
                 PageNumber = pagenumber,
                 PageSize = pagesize
             };
@@ -48,7 +48,7 @@ namespace IdeaDesignTask.Controllers
 
             int ExcludeRecords = (pagesize * pagenumber) - pagesize;
 
-            var Searchresult = _db.Company.Where(e => e.name.Contains(SearchResult) || e.address.Contains(SearchResult) || e.business.Contains(SearchResult)).Skip(ExcludeRecords).Take(pagesize).ToList();
+            var Searchresult = repositoryWrapper.GetCompany.FindAll().Where(e => e.name.Contains(SearchResult) || e.address.Contains(SearchResult) || e.business.Contains(SearchResult)).Skip(ExcludeRecords).Take(pagesize).ToList();
 
             var Result = new PagedResult<Company>
             {
@@ -73,21 +73,21 @@ namespace IdeaDesignTask.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Company.Add(obj);
-                _db.SaveChanges();
+                repositoryWrapper.GetCompany.Create(obj);
+                repositoryWrapper.Save();
                 return RedirectToAction("Index");
             }
 
             return View();
         }
 
-        public IActionResult AllInfo(int? id)
+        public IActionResult AllInfo(int id)
         {
-            if (id == 0 && id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.Company.Find(id);
+            var obj = repositoryWrapper.GetCompany.GetCompany(id);
 
             if (obj == null)
             {
@@ -97,13 +97,13 @@ namespace IdeaDesignTask.Controllers
             return View(obj);
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int id)
         {
-            if (id == 0 && id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.Company.Find(id);
+            var obj = repositoryWrapper.GetCompany.GetCompany(id);
             if (obj == null)
             {
                 return NotFound();
@@ -115,50 +115,53 @@ namespace IdeaDesignTask.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Company obj)
         {
-            _db.Update(obj);
-            _db.SaveChanges();
+            repositoryWrapper.GetCompany.Update(obj);
+            repositoryWrapper.Save();
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
-            if (id == null && id == 0)
+            if (id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.Company.Find(id);
+            var obj = repositoryWrapper.GetCompany.GetCompany(id);
             if (obj == null)
             {
                 return NotFound();
             }
             else
             {
-                _db.Remove(obj);
-                _db.SaveChanges();
+                var comp = repositoryWrapper.GetCompany.GetCompany(id);
+                repositoryWrapper.GetCompany.Delete(comp);
+                repositoryWrapper.Save();
             }
             return RedirectToAction("Index");
         }
 
-        public IActionResult UsersInfo(int? id, int pagenumber = 1, int pagesize = 10)
-        {
-            int ExcludeRecords = (pagesize * pagenumber) - pagesize;
+        //public IActionResult UsersInfo(int id, int pagenumber = 1, int pagesize = 10)
+        //{
+        //    int ExcludeRecords = (pagesize * pagenumber) - pagesize;
 
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            var obj = _db.Company.Where(e => e.id == id).Include(c=> c.Users).Skip(ExcludeRecords).Take(pagesize).ToList();
+        //    if (id == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var obj = repositoryWrapper.GetCompany.FindAll().Where(c => c.id == id);
+            
+        //    var users = repositoryWrapper.GetUser.get
 
-            var Result = new PagedResult<Company>
-            {
-                Data = obj.ToList(),
-                TotalItems = obj.Count(),
-                PageNumber = pagenumber,
-                PageSize = pagesize
-            };
+        //    var Result = new PagedResult<Company>
+        //    {
+        //        Data = obj.ToList(),
+        //        TotalItems = obj.Count(),
+        //        PageNumber = pagenumber,
+        //        PageSize = pagesize
+        //    };
 
-            return View(Result);
-        }
+        //    return View(Result);
+        //}
 
 
     }
