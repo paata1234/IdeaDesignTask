@@ -1,3 +1,5 @@
+using App.Repositories;
+using App.Users;
 using IdeaDesignTask.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +29,8 @@ namespace IdeaDesignTask
         {
             services.AddDbContext<Appdbcontext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("defaultconnection")));
+
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
             services.AddControllersWithViews();
 

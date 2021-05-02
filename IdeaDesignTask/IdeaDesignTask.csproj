@@ -22,4 +22,9 @@
     <Folder Include="wwwroot\fontawesome\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\App\App.csproj" />
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
 </Project>

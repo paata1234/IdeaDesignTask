@@ -1,4 +1,5 @@
-﻿using cloudscribe.Pagination.Models;
+﻿using App.Users;
+using cloudscribe.Pagination.Models;
 using IdeaDesignTask.Data;
 using IdeaDesignTask.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -6,24 +7,25 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
+
 
 namespace IdeaDesignTask.Controllers
 {
     public class CompanyController : Controller
     {
-        public readonly Appdbcontext _db;
+        public readonly IRepositoryWrapper repositoryWrapper;
 
-        public CompanyController(Appdbcontext db)
+        public CompanyController(IRepositoryWrapper repositoryWrapper
         {
-            _db = db;
+            this.repositoryWrapper = repositoryWrapper;
         }
 
         public IActionResult Index(int pagenumber = 1, int pagesize = 5)
         {
             int ExcludeRecords = (pagesize * pagenumber) - pagesize;
 
-            IEnumerable<Company> company = _db.Company.Skip(ExcludeRecords).Take(pagesize);
+            IEnumerable<Company> company = repositoryWrapper..Skip(ExcludeRecords).Take(pagesize);
 
             var Result = new PagedResult<Company>
             {
