@@ -14,5 +14,9 @@ namespace App.Users
 
         IEnumerable<Company> GetAllCompany();
 
+        Company GetCompanyWithUsers(int id);
+
+        IEnumerable<Company> GetCompanyListByFilter(string searchResult, int skip, int take);
+
     }
 }

@@ -48,7 +48,7 @@ namespace IdeaDesignTask.Controllers
 
             int ExcludeRecords = (pagesize * pagenumber) - pagesize;
 
-            var Searchresult = repositoryWrapper.GetCompany.FindAll().Where(e => e.name.Contains(SearchResult) || e.address.Contains(SearchResult) || e.business.Contains(SearchResult)).Skip(ExcludeRecords).Take(pagesize).ToList();
+            var Searchresult = repositoryWrapper.GetCompany.GetCompanyListByFilter(SearchResult, ExcludeRecords, pagesize);
 
             var Result = new PagedResult<Company>
             {
@@ -140,28 +140,28 @@ namespace IdeaDesignTask.Controllers
             return RedirectToAction("Index");
         }
 
-        //public IActionResult UsersInfo(int id, int pagenumber = 1, int pagesize = 10)
-        //{
-        //    int ExcludeRecords = (pagesize * pagenumber) - pagesize;
+        public IActionResult UsersInfo(int id, int pagenumber = 1, int pagesize = 10)
+        {
+            //int ExcludeRecords = (pagesize * pagenumber) - pagesize;
 
-        //    if (id == null || id == 0)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var obj = repositoryWrapper.GetCompany.FindAll().Where(c => c.id == id);
-            
-        //    var users = repositoryWrapper.GetUser.get
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            //var obj = repositoryWrapper.GetCompany.Get(id);
 
-        //    var Result = new PagedResult<Company>
-        //    {
-        //        Data = obj.ToList(),
-        //        TotalItems = obj.Count(),
-        //        PageNumber = pagenumber,
-        //        PageSize = pagesize
-        //    };
+            var c = repositoryWrapper.GetCompany.GetCompanyWithUsers(id);
 
-        //    return View(Result);
-        //}
+            //var Result = new PagedResult<Company>
+            //{
+            //    Data = users.ToList(),
+            //    TotalItems = users.Count(),
+            //    PageNumber = pagenumber,
+            //    PageSize = pagesize
+            //};
+
+            return View(c);
+        }
 
 
     }

@@ -1,26 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Professional\\source\\repos\\IdeaDesignTask\\Data\\Data.csproj": {}
+    "C:\\Users\\JARVIS\\Desktop\\idea interview\\IdeaDesignTask\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Professional\\source\\repos\\IdeaDesignTask\\Data\\Data.csproj": {
+    "C:\\Users\\JARVIS\\Desktop\\idea interview\\IdeaDesignTask\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Professional\\source\\repos\\IdeaDesignTask\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\JARVIS\\Desktop\\idea interview\\IdeaDesignTask\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\Professional\\source\\repos\\IdeaDesignTask\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\Professional\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Professional\\source\\repos\\IdeaDesignTask\\Data\\obj\\",
+        "projectPath": "C:\\Users\\JARVIS\\Desktop\\idea interview\\IdeaDesignTask\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\JARVIS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JARVIS\\Desktop\\idea interview\\IdeaDesignTask\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Professional\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\JARVIS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -75,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

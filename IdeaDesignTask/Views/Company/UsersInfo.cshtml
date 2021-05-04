@@ -1,11 +1,10 @@
-﻿@model cloudscribe.Pagination.Models.PagedResult<Company>
+﻿@model Company
 
 <form method="post">
-    @foreach (var obj in Model.Data)
-    {
+
 
         <div class="border p-3 text-center">
-            <h2 class="text-info pl-1">@obj.name</h2>
+            <h2 class="text-info pl-1">@Model.name</h2>
             <div class="form-group row">
             </div>
             <table class="table">
@@ -19,7 +18,7 @@
                         <th scope="col">მომხმარლების წაშლა</th>
                     </tr>
                 </thead>
-                @if (obj.Users.Count == 0)
+                @if (Model.Users.Count == 0)
                 {
                     <tbody>
                         <tr>
@@ -30,7 +29,7 @@
                 else
                 {
 
-                    @foreach (var users in obj.Users)
+                    @foreach (var users in Model.Users)
                     {
                         <tbody>
                             <tr>
@@ -44,7 +43,7 @@
                                     </div>
                                 <td class="text-center">
                                     <div class="w-75 btn-group" role="group">
-                                        <a asp-controller="Users" asp-route-userid="@users.id" asp-route-companyid="@obj.id" asp-action="DeleteUser" class="btn btn-danger"><i class="fas fa-info-circle"></i> წაშლა</a>
+                                        <a asp-controller="Users" asp-route-userid="@users.id" asp-route-companyid="@Model.id" asp-action="DeleteUser" class="btn btn-danger"><i class="fas fa-info-circle"></i> წაშლა</a>
                                     </div>
                                 </td>
                             </tr>
@@ -57,10 +56,10 @@
                 <a asp-action="Index" class="btn btn-success w-100 "><i class="fas fa-backspace"></i> &nbsp; დაბრუნება</a>
             </div>
         </div>
-    }
+    
 </form>
 
-<cs-pager cs-paging-pagenumber=(int)Model.PageNumber
+@*<cs-pager cs-paging-pagenumber=(int)Model.PageNumber
           cs-paging-totalitems=(int)Model.TotalItems
           cs-paging-pagesize=(int)Model.PageSize
           cs-pagenumber-param="pagenumber"
@@ -71,4 +70,4 @@
           cs-pager-li-non-active-class="page-item disabled"
           cs-pager-link-current-class="page-link"
           cs-pager-link-other-class="page-link">
-</cs-pager>
+</cs-pager>*@
